@@ -1,6 +1,8 @@
 #include "gridScene.h"
 #include "mouseEvent.h"
+#include "keyListener.hpp"
 #include <iostream>
+
 using namespace threepp;
 
 BoxScene::BoxScene() :
@@ -73,7 +75,12 @@ void BoxScene::generateValidPattern() {
 
 
 void BoxScene::animate() {
+
+    m_canvas.addKeyListener(&m_keyListener);
     m_canvas.animate([&](float dt) {
+        if (m_keyListener.onResetPressed()){
+            generateValidPattern();
+        }
         if (m_mouseListener.mouseDown) {
             m_mouseListener.mouseDown = false;
             moves++;

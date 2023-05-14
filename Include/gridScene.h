@@ -6,6 +6,8 @@
 #include "Box.h"
 #include "mouseEvent.h"
 #include "threepp/threepp.hpp"
+#include "keyListener.hpp"
+
 using namespace threepp;
 
 class BoxScene {
@@ -30,6 +32,7 @@ private:
     std::mt19937 m_gen;
     std::uniform_int_distribution<> m_dis;
     MyMouseListener m_mouseListener;
+    MyKeyListener m_keyListener;
     std::shared_ptr<Mesh> mesh;
     std::vector<std::vector<bool>> m_valids = {
             {true, true, true, false, false},
